@@ -144,13 +144,29 @@ h1 iperf -c h2
 
 ## 📸 Screenshots
 
-* ARP packet allowed logs
-* Broadcast detection logs
-* Broadcast limit exceeded logs
-* Flow table output
-* Ping results
-* Wireshark capture
-* iperf results
+### 🔹 Network Connectivity
+![Ping](asset/Screenshot%202026-04-16%20205104.png)
+
+### 🔹 ARP and Broadcast Detection
+![ARP](asset/Screenshot%202026-04-16%20205133.png)
+
+### 🔹 Controller Logs
+![Logs](asset/Screenshot%202026-04-16%20205150.png)
+
+### 🔹 ARP Testing
+![ARP Test](asset/Screenshot%202026-04-16%20205224.png)
+
+### 🔹 Broadcast Behavior
+![Broadcast](asset/Screenshot%202026-04-16%20205432.png)
+
+### 🔹 Flow Table
+![Flow](asset/Screenshot%202026-04-16%20205508.png)
+
+### 🔹 iperf Result
+![iperf](asset/Screenshot%202026-04-16%20205544.png)
+
+### 🔹 Wireshark Capture
+![Wireshark](asset/Screenshot%202026-04-16%20205735.png)
 
 ---
 

@@ -145,7 +145,7 @@ h1 iperf -c h2
 ## 📸 Screenshots
 
 ### 🔹 Network Connectivity
-![Ping](asset/Screenshot%202026-04-16%20205104.png)
+![Ping](https://raw.githubusercontent.com/Khushi-patel05/Broadcast-Traffic-Control/blob/main/assets/Screenshot%202026-04-16%20205104.png?raw=true)
 
 ### 🔹 ARP and Broadcast Detection
 ![ARP](asset/Screenshot%202026-04-16%20205133.png)

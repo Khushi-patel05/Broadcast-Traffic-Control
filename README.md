@@ -145,28 +145,36 @@ h1 iperf -c h2
 ## 📸 Screenshots
 
 ### 🔹 Network Connectivity
-![Ping](https://raw.githubusercontent.com/Khushi-patel05/Broadcast-Traffic-Control/blob/main/assets/Screenshot%202026-04-16%20205104.png?raw=true)
+<img width="358" height="132" alt="Screenshot 2026-04-16 205104" src="https://github.com/user-attachments/assets/7b39a6be-b8dc-4876-9c14-abc0022df2c7" />
+
 
 ### 🔹 ARP and Broadcast Detection
-![ARP](asset/Screenshot%202026-04-16%20205133.png)
+<img width="580" height="254" alt="Screenshot 2026-04-16 205133" src="https://github.com/user-attachments/assets/66d4964e-3f5b-4643-b7f5-65170aa5fc2c" />
+
 
 ### 🔹 Controller Logs
-![Logs](asset/Screenshot%202026-04-16%20205150.png)
+<img width="637" height="327" alt="Screenshot 2026-04-16 205150" src="https://github.com/user-attachments/assets/7161ec02-b868-40f9-a488-b9915c41b448" />
+
 
 ### 🔹 ARP Testing
-![ARP Test](asset/Screenshot%202026-04-16%20205224.png)
+<img width="686" height="237" alt="Screenshot 2026-04-16 205224" src="https://github.com/user-attachments/assets/5cf9bb22-f6b0-431e-a390-ca5f4d390739" />
+
 
 ### 🔹 Broadcast Behavior
-![Broadcast](asset/Screenshot%202026-04-16%20205432.png)
+<img width="714" height="201" alt="Screenshot 2026-04-16 205432" src="https://github.com/user-attachments/assets/270908a2-9aaf-495f-bb6e-ad248c31fde8" />
+
 
 ### 🔹 Flow Table
-![Flow](asset/Screenshot%202026-04-16%20205508.png)
+<img width="730" height="94" alt="Screenshot 2026-04-16 205508" src="https://github.com/user-attachments/assets/a72fe3f4-713c-4296-a7d3-53df649e23aa" />
+
 
 ### 🔹 iperf Result
-![iperf](asset/Screenshot%202026-04-16%20205544.png)
+<img width="546" height="75" alt="Screenshot 2026-04-16 205544" src="https://github.com/user-attachments/assets/77c5acc8-7663-426d-b863-eee417cd9527" />
+
 
 ### 🔹 Wireshark Capture
-![Wireshark](asset/Screenshot%202026-04-16%20205735.png)
+<img width="963" height="651" alt="Screenshot 2026-04-16 205735" src="https://github.com/user-attachments/assets/87fcb049-f21c-486b-bf64-eb451b1cfb16" />
+
 
 ---
 

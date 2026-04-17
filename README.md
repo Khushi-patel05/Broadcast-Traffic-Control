@@ -1,8 +1,12 @@
 # 📡 Broadcast Traffic Control using SDN (POX + Mininet)
 
+---
+
 ## 📖 Overview
 
-This project demonstrates how Software Defined Networking (SDN) can be used to monitor and control broadcast traffic in a network. Excessive broadcast traffic can lead to broadcast storms, degrading network performance. Using a POX controller and OpenFlow rules, this system detects, limits, and drops excessive broadcast packets.
+This project demonstrates how **Software Defined Networking (SDN)** can be used to monitor and control broadcast traffic in a network. Excessive broadcast traffic can lead to **broadcast storms**, degrading network performance.
+
+Using a **POX controller** and **OpenFlow rules**, this system detects, limits, and controls broadcast packets dynamically.
 
 ---
 
@@ -35,6 +39,7 @@ This project demonstrates how Software Defined Networking (SDN) can be used to m
 
   * Allows ARP traffic
   * Detects broadcast packets
+  * Counts packets per switch
   * Drops packets after threshold
   * Installs flow rules using OpenFlow
 
@@ -44,9 +49,9 @@ This project demonstrates how Software Defined Networking (SDN) can be used to m
 
 * Handles `PacketIn` events dynamically
 * Implements **match-action logic**
-* Uses **OpenFlow flow rules (ofp_flow_mod)**
+* Uses **OpenFlow flow rules (`ofp_flow_mod`)**
 * Detects broadcast MAC (`ff:ff:ff:ff:ff:ff`)
-* Applies **broadcast threshold limit**
+* Applies broadcast threshold (**LIMIT = 20 packets**)
 * Prevents network congestion
 
 ---
@@ -78,7 +83,7 @@ sudo mn --topo single,3 --controller remote
 h1 ping h2
 ```
 
-✔ Expected: Successful communication between hosts
+✔ Successful communication between hosts (0% packet loss)
 
 ---
 
@@ -88,10 +93,8 @@ h1 ping h2
 h1 arping 10.0.0.2
 ```
 
-✔ Expected:
-
-* ARP packets allowed
-* Broadcast detected
+✔ ARP packets allowed
+✔ Broadcast packets detected by controller
 
 ---
 
@@ -101,33 +104,33 @@ h1 arping 10.0.0.2
 h1 arping 10.0.0.2
 ```
 
-✔ Expected:
-
-* Broadcast packets counted
-* After threshold → packets dropped
+✔ Broadcast packets counted
+✔ After threshold → packets are restricted by controller
 
 ---
 
 ## 📊 Proof of Execution
 
-### 🔹 Flow Table
+### 🔹 Flow Table Verification
 
 ```bash
 sh ovs-ofctl dump-flows s1
 ```
 
-✔ Shows installed OpenFlow rules
+✔ Shows OpenFlow rules installed in switch
 
 ---
 
 ### 🔹 Wireshark Analysis
 
 * ARP packets captured
-* Broadcast MAC address detected:
+* Broadcast MAC observed:
 
 ```
 ff:ff:ff:ff:ff:ff
 ```
+
+✔ Confirms Layer-2 broadcast traffic
 
 ---
 
@@ -138,61 +141,83 @@ h2 iperf -s
 h1 iperf -c h2
 ```
 
-✔ Demonstrates network throughput
+✔ Demonstrates network throughput and performance
 
 ---
 
 ## 📸 Screenshots
 
 ### 🔹 Network Connectivity
-<img width="358" height="132" alt="Screenshot 2026-04-16 205104" src="https://github.com/user-attachments/assets/7b39a6be-b8dc-4876-9c14-abc0022df2c7" />
 
+<img width="600" src="https://github.com/user-attachments/assets/7b39a6be-b8dc-4876-9c14-abc0022df2c7" />
+<br>Successful ping between hosts with no packet loss.
+
+---
 
 ### 🔹 ARP and Broadcast Detection
-<img width="580" height="254" alt="Screenshot 2026-04-16 205133" src="https://github.com/user-attachments/assets/66d4964e-3f5b-4643-b7f5-65170aa5fc2c" />
 
+<img width="600" src="https://github.com/user-attachments/assets/66d4964e-3f5b-4643-b7f5-65170aa5fc2c" />
+<br>Controller detects ARP and broadcast packets.
+
+---
 
 ### 🔹 Controller Logs
-<img width="637" height="327" alt="Screenshot 2026-04-16 205150" src="https://github.com/user-attachments/assets/7161ec02-b868-40f9-a488-b9915c41b448" />
 
+<img width="600" src="https://github.com/user-attachments/assets/7161ec02-b868-40f9-a488-b9915c41b448" />
+<br>Logs showing ARP allowed and broadcast packet count.
+
+---
 
 ### 🔹 ARP Testing
-<img width="686" height="237" alt="Screenshot 2026-04-16 205224" src="https://github.com/user-attachments/assets/5cf9bb22-f6b0-431e-a390-ca5f4d390739" />
 
+<img width="600" src="https://github.com/user-attachments/assets/5cf9bb22-f6b0-431e-a390-ca5f4d390739" />
+<br>ARP communication between hosts.
+
+---
 
 ### 🔹 Broadcast Behavior
-<img width="714" height="201" alt="Screenshot 2026-04-16 205432" src="https://github.com/user-attachments/assets/270908a2-9aaf-495f-bb6e-ad248c31fde8" />
 
+<img width="600" src="https://github.com/user-attachments/assets/270908a2-9aaf-495f-bb6e-ad248c31fde8" />
+<br>Broadcast packets being generated and monitored.
+
+---
 
 ### 🔹 Flow Table
-<img width="730" height="94" alt="Screenshot 2026-04-16 205508" src="https://github.com/user-attachments/assets/a72fe3f4-713c-4296-a7d3-53df649e23aa" />
 
+<img width="600" src="https://github.com/user-attachments/assets/a72fe3f4-713c-4296-a7d3-53df649e23aa" />
+<br>Installed OpenFlow rules inside the switch.
+
+---
 
 ### 🔹 iperf Result
-<img width="546" height="75" alt="Screenshot 2026-04-16 205544" src="https://github.com/user-attachments/assets/77c5acc8-7663-426d-b863-eee417cd9527" />
 
+<img width="600" src="https://github.com/user-attachments/assets/77c5acc8-7663-426d-b863-eee417cd9527" />
+<br>Bandwidth measurement between hosts.
+
+---
 
 ### 🔹 Wireshark Capture
-<img width="963" height="651" alt="Screenshot 2026-04-16 205735" src="https://github.com/user-attachments/assets/87fcb049-f21c-486b-bf64-eb451b1cfb16" />
 
+<img width="600" src="https://github.com/user-attachments/assets/87fcb049-f21c-486b-bf64-eb451b1cfb16" />
+<br>Packet-level analysis showing broadcast MAC address.
 
 ---
 
 ## 📌 Expected Output
 
 * Broadcast packets are detected and counted
-* Excess packets are dropped after threshold
+* After threshold, packets are controlled/dropped
 * Flow rules are installed in switch
-* Network remains stable
+* Network performance remains stable
 
 ---
 
 ## 🧠 Conclusion
 
-This project shows how SDN enables centralized control over network behavior. By implementing broadcast traffic control using POX and OpenFlow, we successfully prevent broadcast storms and improve network efficiency.
+This project demonstrates how SDN enables **centralized and intelligent control** over network behavior. By implementing broadcast traffic control using POX and OpenFlow, we successfully reduce unnecessary broadcast traffic and improve overall network efficiency.
 
 ---
 
 ## 👩‍💻 Author
 
-* Khushi Patel
+**Khushi Patel**
